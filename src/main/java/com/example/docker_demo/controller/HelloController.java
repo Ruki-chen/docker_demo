@@ -17,4 +17,10 @@ public class HelloController {
     public String say(@RequestParam String userName){
         return "hello,"+userName+"!";
     }
+
+    @GetMapping("/sayILoveYou")
+    @ApiOperation(value = "返回用户名", notes = "返回用户名")
+    public String sayILoveYou(@RequestParam String userName){
+        return userName+"，I Love You!";
+    }
 }
