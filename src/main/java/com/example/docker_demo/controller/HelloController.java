@@ -14,6 +14,7 @@ import javax.validation.Valid;
 @RequestMapping("/hello")
 @Api(value = "hello", tags = "hello测试")
 public class HelloController {
+
     @Autowired
     private HelloService helloService;
 
