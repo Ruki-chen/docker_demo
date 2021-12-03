@@ -15,11 +15,9 @@ import java.io.Serializable;
 @Table(name = "hello")
 @Data
 @NoArgsConstructor
-public class HelloEntity implements Serializable {
+public class HelloEntity extends BaseEntity implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long            id;
 
     private String          name;
+
 }

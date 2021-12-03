@@ -2,13 +2,13 @@ package com.example.docker_demo.service.impl;
 
 import com.example.docker_demo.repository.BaseRepository;
 import com.example.docker_demo.service.BaseService;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public abstract class BaseServiceImpl<T, V, ID extends Serializable> implements BaseService<T, V, ID> {
 
@@ -53,4 +53,18 @@ public abstract class BaseServiceImpl<T, V, ID extends Serializable> implements 
     public void deleteInBatch(Iterable<T> var1) {
         this.currentJpaRepository().deleteInBatch(var1);
     }
+
+    public static String[] getNullPropertyNames(Object source) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+        Set<String> emptyNames = new HashSet<String>();
+        for (java.beans.PropertyDescriptor pd : pds) {
+            Object srcValue = src.getPropertyValue(pd.getName());
+            if (srcValue == null) emptyNames.add(pd.getName());
+        }
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
+    }
+
 }

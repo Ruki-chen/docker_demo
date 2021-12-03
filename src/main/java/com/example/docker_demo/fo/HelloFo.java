@@ -1,5 +1,6 @@
-package com.example.docker_demo.vo;
+package com.example.docker_demo.fo;
 
+import com.example.docker_demo.config.EntityFillUtil;
 import com.example.docker_demo.entity.HelloEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -10,10 +11,10 @@ import org.springframework.beans.BeanUtils;
 /**
  * @Author cwr
  */
-@ApiModel("hello-试图对象")
+@ApiModel("hello-输入对象")
 @Data
 @NoArgsConstructor
-public class HelloVo extends BaseVo{
+public class HelloFo extends BaseFo{
 
     /**
      * 鱼塘名称
@@ -21,8 +22,7 @@ public class HelloVo extends BaseVo{
     @ApiModelProperty("名字")
     private String            name;
 
-
-    public  HelloVo(HelloEntity helloEntity){
+    public  HelloFo(HelloEntity helloEntity){
         if(helloEntity != null){
             BeanUtils.copyProperties(helloEntity, this);
         }
@@ -32,6 +32,7 @@ public class HelloVo extends BaseVo{
     public HelloEntity toHelloEntity() {
         HelloEntity helloEntity = new HelloEntity();
         BeanUtils.copyProperties(this, helloEntity);
+        EntityFillUtil.fill(helloEntity);
         return helloEntity;
     }
 }
