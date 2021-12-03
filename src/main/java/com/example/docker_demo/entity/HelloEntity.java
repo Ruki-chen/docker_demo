@@ -17,7 +17,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class HelloEntity extends BaseEntity implements Serializable {
 
-
     private String          name;
 
 }

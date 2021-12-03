@@ -6,7 +6,7 @@ import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 
 public class MyPhysicalNamingStrategy extends SpringPhysicalNamingStrategy {
     //
-    public static final String REFERRAL = "fish_";
+    public static final String REFERRAL = "test_";
 
     //
     @Override
