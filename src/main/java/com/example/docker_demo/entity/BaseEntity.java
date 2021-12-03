@@ -4,10 +4,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -16,7 +13,7 @@ import java.util.Date;
  * @date 2021/12/01
  */
 @Data
-@Entity
+@MappedSuperclass
 public abstract class BaseEntity {
 
     @Id
